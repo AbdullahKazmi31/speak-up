@@ -23,47 +23,106 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.brown[50],
-        
-        appBar: AppBar(
-        title: Text("Speak Up chat bot"),
-        backgroundColor: Colors.pink,
-      ),
+    return Material(
+          type: MaterialType.transparency,
 
-        body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/img1.jpg'),
-            fit: BoxFit.fill,
-            colorFilter: ColorFilter.linearToSrgbGamma(),
+          child: Scaffold(
+//          backgroundColor: Colors.brown[50],
+          
+          appBar: AppBar(
+          title: Text("SpeakUp",
+          style: TextStyle(
+                fontFamily: "MetalMania",
+                fontSize: 35.0,
+                color: Colors.white,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          backgroundColor: Colors.pink,
+        ),
+
+          body: Container(
+          decoration: BoxDecoration(
+            color: const Color(0xff000000),
+            image: DecorationImage(
+              colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.dstATop),
+
+              image: AssetImage('assets/Public Speaking.jpg'),
+              fit: BoxFit.fitHeight,
+              //colorFilter: ColorFilter.linearToSrgbGamma(),
+            ),
+          ),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Welcome to SpeakUp',
+                  style: TextStyle(                  
+                    fontFamily: "Signatra",
+                    fontSize: 80.0,
+                    color: Color.fromRGBO(255, 255, 255, 0.8),
+//                    color: Colors.white,
+                  ),
+                textAlign: TextAlign.center,
+                ),
+
+                SizedBox(height: 60.0),
+                
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(width: 40.0),
+                    IconButton(
+                      iconSize: 70.0,
+                      icon: Image.asset('assets/image.png'),
+                      hoverColor: Colors.green,
+                      onPressed: () {
+                        navigateTochatbotPage(context);
+                      },
+                    ),
+                    SizedBox(width: 30.0),                    
+                    IconButton(
+                      iconSize: 120.0,
+                      icon: Image.asset('assets/voicebot.png'),
+                      hoverColor: Colors.green,
+                      onPressed: () {
+                        navigateTovoicebotPage(context);
+                      },
+                    ),
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    SizedBox(width: 66),
+                    Text('ChatBot',
+                      style: TextStyle(
+                      fontFamily: "MetalMania",
+                      fontSize: 30.0,
+                      color: Color.fromRGBO(255, 255, 255, 0.7),
+                      //color: Colors.blue[100],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(width: 50),
+                  Text('VoiceBot',
+                      style: TextStyle(
+                      fontFamily: "MetalMania",
+                      fontSize: 30.0,
+                      color: Color.fromRGBO(255, 255, 255, 0.7),
+//                      color: Colors.blue[100],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              IconButton(
-                iconSize: 130.0,
-                icon: Image.asset('assets/chatbot.png'),
-                hoverColor: Colors.green,
-                onPressed: () {
-                  navigateTochatbotPage(context);
-                },
-              ),
-              IconButton(
-                iconSize: 200.0,
-                icon: Image.asset('assets/voicebot.png'),
-                hoverColor: Colors.green,
-                onPressed: () {
-                  navigateTovoicebotPage(context);
-                },
-              ),
-            ],
-          ),
-        ),
+        drawer: MainDrawer(),
       ),
-      drawer: MainDrawer(),
     );
   }
 }
